@@ -15,3 +15,7 @@ Simple bash script that keeps up-to-date the system and removes some unnecessary
 Bash script used to flip the screen of 180 degrees and show the virtual keyboard onboard (if it's installed in the system). It's very useful for 2-1 laptops with touchscreen. In Microsoft Windows 10 those operations are performed automatically when the laptop's screen is flipped over 180 degrees, this script tries to bring that feature to Linux.
 
 If the screen has a normal orientation the execution of this script will flip the screen upside down, if the script it's executed again with a rotated screen it will restore the original orientation.
+
+### install_scripts.sh
+
+Execute this script to setup a `bin` folder to your home directory (if it not already exists) and move these scripts to that folder. The `bin` directory will be added to the executable path and the scripts will be made executables only for the user. If you run this script with `sudo` it will be moved the scripts that need superuser privileges, otherwise they won't be copied.
