@@ -25,8 +25,8 @@ if [ ! -d "$REAL_HOME/bin" ] ; then
 		# Add $REAL_HOME/bin folder to the executable path
 		echo "" >> "$REAL_HOME/.profile"
 		echo "# set PATH so it includes user's private bin" >> $REAL_HOME/.profile
-		echo 'if [ -d "$REAL_HOME/bin" ] ; then' >> "$REAL_HOME/.profile"
-		echo '    PATH="$REAL_HOME/bin:$PATH"' >> "$REAL_HOME/.profile"
+		echo 'if [ -d "$HOME/bin" ] ; then' >> "$REAL_HOME/.profile"
+		echo '    PATH="$HOME/bin:$PATH"' >> "$REAL_HOME/.profile"
 		echo 'fi' >> "$REAL_HOME/.profile"
 
 		source "$REAL_HOME/.profile"
@@ -38,8 +38,10 @@ else
 fi
 
 echo "Copying scripts to $REAL_HOME/bin"
+
 # Here add the scripts that must be executed with sudo
 sudoScripts="up"
+
 if [ $(id -u) = 0 ]; then  # If the script is executed with sudo
 	echo ---
 	echo $(ls $(dirname "$0")/scripts)
@@ -54,7 +56,7 @@ if [ $(id -u) = 0 ]; then  # If the script is executed with sudo
 else  # If the script is not executed with sudo
 	for file in $(ls $(dirname "$0")/scripts); do
 		if [ ! "$(echo $sudoScripts | grep $file)" ]; then
-			copyScript "$file"
+			copyScript "$(dirname "$0")/scripts/$file"
 		fi
 	done
 fi
