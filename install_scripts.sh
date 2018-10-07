@@ -21,7 +21,7 @@ if [ ! -d "$REAL_HOME/bin" ] ; then
 	mkdir "$REAL_HOME/bin" -m 755
 	chgrp $(who | awk '{print $1}') "$REAL_HOME/bin"
 	chown $(who | awk '{print $1}') "$REAL_HOME/bin"
-	if [ ! $(grep 'PATH="\$REAL_HOME/bin:\$PATH"' $REAL_HOME/.profile) ] ; then
+	if [ ! $(grep 'PATH="\$HOME/bin:\$PATH"' $REAL_HOME/.profile) ] ; then
 		# Add $REAL_HOME/bin folder to the executable path
 		echo "" >> "$REAL_HOME/.profile"
 		echo "# set PATH so it includes user's private bin" >> $REAL_HOME/.profile
