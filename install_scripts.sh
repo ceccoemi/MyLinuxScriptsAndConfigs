@@ -40,7 +40,7 @@ fi
 echo "Copying scripts to $REAL_HOME/bin"
 
 # Here add the scripts that must be executed with sudo
-sudoScripts="up"
+sudoScripts="up set-hyper-threading"
 
 if [ $(id -u) = 0 ]; then  # If the script is executed with sudo
 	echo ---
