@@ -1,5 +1,17 @@
 # My Linux Scripts and Configs
 
+## Installation
+
+Execute the bash script `install_sc` to setup a `bin` folder to your home 
+directory (if it not already exists) and move the scripts located in `scripts`
+to that folder. The `bin` directory will be added to the executable path and 
+the scripts will be made executables only for the user. If the installation
+script is executed with sudo, than the scripts that need superuser privileges 
+will be copied, otherwise they won't be copied.
+
+The configs files will be also moved to `$HOME` and eventually they will 
+override the existing ones.
+
 ## Configs
 
 Some config files that has to be placed in the home directory.
@@ -14,15 +26,6 @@ A collection of scripts that help me to automate tasks I do frequently on my
 Linux system. Because those scripts are strictly related to my Linux 
 installation, please let me know if they don't apply to your system, I will 
 happy to make them work even for you if you're interested.
-
-### install_scripts.sh
-
-Execute this script to setup a `bin` folder to your home directory (if it not 
-already exists) and move these scripts to that folder. The `bin` directory 
-will be added to the executable path and the scripts will be made executables 
-only for the user. If the `install_scripts.sh` is executed with sudo, than 
-the scripts that need superuser privileges will be copied, otherwise they 
-won't be copied.
 
 ### up
 
