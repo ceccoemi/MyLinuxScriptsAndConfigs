@@ -25,6 +25,14 @@ set wildmenu
 " required for better searching
 filetype plugin on
 
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
 " other programming languages
 au BufNewFile,BufRead *.java, *.c, *.h, *.cpp, *.hpp, *.html, *.css, *.xml
     \ set tabstop=2 |
