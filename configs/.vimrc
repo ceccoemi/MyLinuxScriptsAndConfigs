@@ -1,25 +1,33 @@
-syntax enable
+set nocompatible  " set no compatible with old version of VI
 
-set encoding=utf-8 " encoding used for displaying file
-set fileencoding=utf-8 " encoding used when saving file
+syntax enable
 
 set ruler " show the cursor position all the time
-
 set showmatch " highlight matching braces
-
 set showmode " show insert/replace/visual mode
-
 set number  " show line numbers
 set colorcolumn=80  " show a vertical line at column 80
-
-set autoindent
-syntax enable
 
 set background=dark
 colorscheme solarized
 
+set autoindent
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set textwidth=79
 set expandtab
+
+" Search down into subfolders
+set path+=**
+" Display all matching files when we tab complete
+set wildmenu
+" required for better searching
+filetype plugin on
+
+" other programming languages
+au BufNewFile,BufRead *.java, *.c, *.h, *.cpp, *.hpp, *.html, *.css, *.xml
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set colorcolumn=100
