@@ -2,9 +2,9 @@
 
 ## Installation
 
-Execute the bash script `install_sc` to setup a `bin` folder to your home 
-directory (if it not already exists) and move the scripts located in `scripts`
-to that folder. The `bin` directory will be added to the executable path and 
+Execute the bash script `install_scripts` to setup a `bin` folder to your home 
+directory (if it not already exists) and move the scripts to that folder. 
+The `bin` directory will be added to the executable path and 
 the scripts will be made executables only for the user. If the installation
 script is executed with sudo, than the scripts that need superuser privileges 
 will be copied, otherwise they won't be copied.
