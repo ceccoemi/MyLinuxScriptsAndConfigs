@@ -1,4 +1,4 @@
-# My Linux Scripts and Configs
+# Scripts and dotfiles
 
 ## Installation
 
@@ -9,16 +9,17 @@ the scripts will be made executables only for the user. If the installation
 script is executed with sudo, than the scripts that need superuser privileges 
 will be copied, otherwise they won't be copied.
 
-The configs files will be also moved to `$HOME` and eventually they will 
-override the existing ones.
-
-## Configs
+## Dotfiles
 
 Some config files that has to be placed in the home directory.
 
 * .vimrc
 
 * .tmux.conf
+
+* .vim
+
+* .bashrc
 
 ## Scripts
 
