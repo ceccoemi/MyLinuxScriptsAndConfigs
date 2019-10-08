@@ -76,3 +76,9 @@ To disable hyper-threading run:
 To enable hyper-threading run:
 
     $ sudo set-hyper-threading 1
+
+### randline
+
+Bash script to print a random line of a file.
+
+    $ randline <filename>

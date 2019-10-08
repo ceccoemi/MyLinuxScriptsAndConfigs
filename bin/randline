@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+if [ ! -f "$1" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    echo "Usage: randline <filename>"
+    echo ""
+    echo "Display a random line of a file"
+    exit -1
+fi
+
+sed -n $((RANDOM % $(wc -l "$1" | cut -d ' ' -f 1) + 1))p "$1"
