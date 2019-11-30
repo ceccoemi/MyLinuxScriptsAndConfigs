@@ -4,8 +4,8 @@
 
 Execute the bash script `install_scripts` to setup a `bin` folder to your home
 directory (if it not already exists) and move the scripts to that folder.
-The `bin` directory will be added to the executable path and
-the scripts will be made executables only for the user. If the installation
+The `bin` directory will be added to the executable path through the `.profile`
+and the scripts will be made executables only for the user. If the installation
 script is executed with sudo, than the scripts that need superuser privileges
 will be copied, otherwise they won't be copied.
 
