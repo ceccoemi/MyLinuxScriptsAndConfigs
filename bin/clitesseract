@@ -1,9 +1,12 @@
 #!/bin/bash
 
 
+set -o nounset
+set -o errexit
+
+
 function main {
-    # Execute tesseract command, display the output of the generated file and delete it
-    tesseract $1 /tmp/clitess_out "${@:2}"
+    tesseract "$1" /tmp/clitess_out "${@:2}"
     cat /tmp/clitess_out* 2> /dev/null
     rm /tmp/clitess_out* 2> /dev/null
 }
@@ -11,13 +14,14 @@ function main {
 function showHelp {
     echo "Tesseract command line tool."
     echo ""
-    echo "Display the output of a Tesseract execution without worry of the output file"
+    echo "Display the output of a Tesseract execution without worry of the \
+output file"
     echo ""
     echo "Usage:"
     echo "    clitesseract <imagename> [OPTIONS] [CONFIGURATIONS]"
 }
 
-if [ $1 = "--help" ] || [ $1 = "-h" ]; then
+if [[ $1 = "--help" || $1 = "-h" ]]; then
     showHelp
 else
     main "$@"
