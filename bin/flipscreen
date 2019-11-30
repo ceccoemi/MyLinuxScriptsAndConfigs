@@ -1,17 +1,28 @@
 #!/bin/bash
 
+
+set -o nounset
+set -o errexit
+
+
 currentRotation=$(xrandr --query --verbose | grep eDP-1 | cut -b46-51)
-if [ $currentRotation = "normal" ]; then
-	xrandr -o inverted
-	xinput set-prop 'ELAN Touchscreen' 'Coordinate Transformation Matrix' -1 0 1 0 -1 1 0 0 1
-	# If onboard is installed then launch it
-	if command -v onboard &> /dev/null ; then
-		(onboard &) &> /dev/null
-	else
-		echo "WARNING: onboard not installed, not able to use it"
-	fi
+if [[ "$currentRotation" = "normal" ]]; then
+    xrandr -o inverted
+    xinput set-prop \
+        'ELAN Touchscreen' \
+        'Coordinate Transformation Matrix' \
+        -1 0 1 0 -1 1 0 0 1
+    # If onboard is installed then launch it
+    if command -v onboard &> /dev/null ; then
+        (onboard &) &> /dev/null
+    else
+        echo "WARNING: onboard not installed, not able to use it"
+    fi
 else
-	xrandr -o normal
-	xinput set-prop 'ELAN Touchscreen' 'Coordinate Transformation Matrix' 1 0 0 0 1 0 0 0 1
-	killall onboard &> /dev/null
+    xrandr -o normal
+    xinput set-prop \
+        'ELAN Touchscreen' \
+        'Coordinate Transformation Matrix' \
+        1 0 0 0 1 0 0 0 1
+    killall onboard &> /dev/null
 fi
