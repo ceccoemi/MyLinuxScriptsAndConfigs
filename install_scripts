@@ -13,7 +13,7 @@ REAL_HOME="/home/$REAL_USER"
 # $2: 1 if it's a script that needs superuser privileges, 0 otherwise
 function copyScript {
     scriptBasename=$(basename "$1")
-    echo "Copying "$scriptBasename""
+    echo "Copying $scriptBasename"
     cp "$1" "$REAL_HOME/bin"
     chmod 744 "$REAL_HOME/bin/$scriptBasename"
     chgrp "$REAL_USER" "$REAL_HOME/bin/$scriptBasename"
@@ -60,7 +60,7 @@ fi
 SUDO_SCRIPTS="up set-hyper-threading"
 
 for scriptFile in "$(dirname "$0")"/bin/*; do
-    if [[ $SUDO_EXEC == 1 && $SUDO_SCRIPTS == *$(basename $scriptFile)* ]]; then
+    if [[ $SUDO_EXEC == 1 && $SUDO_SCRIPTS == *$(basename "$scriptFile")* ]]; then
         sudoScriptFlag=1
     else
         sudoScriptFlag=0
