@@ -1,7 +1,11 @@
 #!/bin/bash
 
 
-if [ ! -f "$1" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+set -o nounset
+set -o errexit
+
+
+if [[ ! -f "$1" || "$1" == "-h" || "$1" == "--help" ]]; then
     echo "Usage: randline <filename>"
     echo ""
     echo "Display a random line of a file"
