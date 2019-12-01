@@ -12,4 +12,4 @@ if [[ ! -f "$1" || "$1" == "-h" || "$1" == "--help" ]]; then
     exit -1
 fi
 
-sed -n $((RANDOM % $(wc -l "$1" | cut -d ' ' -f 1) + 1))p "$1"
+cat "$1" | sort --random-sort | tail -n 1
