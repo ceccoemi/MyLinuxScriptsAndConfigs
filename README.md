@@ -1,20 +1,6 @@
 # Bash scripts
 
-## Installation
-
-Execute the bash script `install_scripts` to setup a `bin` folder to your home
-directory (if it not already exists) and move the scripts to that folder.
-The `bin` directory will be added to the executable path through the `.profile`
-and the scripts will be made executables only for the user. If the installation
-script is executed with sudo, than the scripts that need superuser privileges
-will be copied, otherwise they won't be copied.
-
-## Scripts
-
-Because those scripts are strictly related to my Linux installation, please let me know if they
-don't apply to your system, I will happy to make them work even for you if you're interested.
-
-### up
+## up
 
 Works only on Debian-based distributions.
 
@@ -23,7 +9,7 @@ unnecessary packages. It performs an update of the APT packages and the snaps
 packages, which I use many of them. If you still don't know what the snaps are
 please take a look at [their site](https://snapcraft.io/).
 
-### flipscreen
+## flipscreen
 
 Bash script used to flip the screen of 180 degrees and show the virtual
 keyboard onboard (if it's installed in the system). It's very useful for 2-1
@@ -35,7 +21,7 @@ If the screen has a normal orientation the execution of this script will flip
 the screen upside down, if the script it's executed again with a rotated
 screen it will restore the original orientation.
 
-### clitesseract
+## clitesseract
 
 This is a very simple Bash script that let you execute the `tesseract` command
 without worry of the output file.
@@ -64,7 +50,7 @@ example:
 it will be displayed the output of the `.tsv` file with PageSegmentationMode
 number 7 and whitelist=abc.
 
-### set-hyper-threading
+## set-hyper-threading
 
 Script to enable or disable the hyper-threading technology if it's supported
 by the system.
