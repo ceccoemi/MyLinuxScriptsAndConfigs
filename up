@@ -1,6 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
-if ! [ $(id -u) = 0 ]; then
+
+set -o nounset  # display error and exit when referencing undefined variables
+set -o errexit  # abort script when a command exists with a non-zero status
+
+
+if [ $(id -u) -neq 0 ]; then
 	echo "Please run this script as root"
 	exit 1
 fi
