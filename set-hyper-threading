@@ -1,17 +1,20 @@
-#!/bin/bash
+#!/bin/sh
 
 
-set -o nounset
-set -o errexit
+set -o nounset  # display error and exit when referencing undefined variables
+set -o errexit  # abort script when a command exists with a non-zero status
 
 
 # Turn hyper-threading off or on
 
 # PARM: 1="0" turn off hyper threading, "1" turn it on.
 
-if [[ $# -ne 1 ]]; then
-    echo 'One argument required. 0 to turn off hyper-threading or'
-    echo '1 to turn hyper-threading back on'
+if [ $# -ne 1 ]; then
+    cat << EOF
+One argument required:
+    0 - turn off hyper-threading
+    1 - to turn hyper-threading back on'
+EOF
     exit 1
 fi
 
@@ -28,16 +31,17 @@ physicalCores=$(grep cpu.cores /proc/cpuinfo | uniq | awk '{print $4}')
 actualCores=$(( physicalCores * physicalCpus ))
 logicalCores=$(grep -c processor /proc/cpuinfo)
 
-echo ""
-echo "Physical CPUs: $physicalCpus"
-echo "Number of physical cores in each physical CPUs: $physicalCores"
-echo "Actual number of physical cores: $actualCores"
-echo "Number of logical cores: $logicalCores"
-echo ""
+cat << EOF
+Physical CPUs: $physicalCpus
+Number of physical cores in each physical CPUs: $physicalCores
+Actual number of physical cores: $actualCores
+Number of logical cores: $logicalCores
 
-if [[ "$actualCores" != "$logicalCores" ]]; then
+EOF
+
+if [ "$actualCores" != "$logicalCores" ]; then
     echo "Hyper-threading is enabled!"
-    if [ "$1" == 0 ]; then
+    if [ "$1" = 0 ]; then
         echo "Turning it off..."
         for i in $(seq $actualCores $(( logicalCores - 1 ))); do
             echo 0 > "/sys/devices/system/cpu/cpu$i/online"
@@ -47,7 +51,7 @@ if [[ "$actualCores" != "$logicalCores" ]]; then
     fi
 else
     echo "Hyper-threading is not enabled!"
-    if [[ "$1" == 1 ]]; then
+    if [ "$1" -eq 1 ]; then
         echo "Turning it on..."
         for i in $(seq $actualCores $((( 2 * physicalCores ) - 1 ))); do
             echo 1 > "/sys/devices/system/cpu/cpu$i/online"
@@ -59,8 +63,10 @@ fi
 
 logicalCores=$(grep -c processor /proc/cpuinfo)
 
-echo ""
-echo "Physical CPUs: $physicalCpus"
-echo "Number of physical cores in each physical CPUs: $physicalCores"
-echo "Actual number of physical cores: $actualCores"
-echo "Number of logical cores: $logicalCores"
+cat << EOF
+Physical CPUs: $physicalCpus
+Number of physical cores in each physical CPUs: $physicalCores
+Actual number of physical cores: $actualCores
+Number of logical cores: $logicalCores
+
+EOF
