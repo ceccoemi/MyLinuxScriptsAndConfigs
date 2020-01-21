@@ -1,5 +1,7 @@
 # Shell scripts
 
+All the scripts are POSIX compliant.
+
 ## up
 
 Works only on Debian-based distributions.
